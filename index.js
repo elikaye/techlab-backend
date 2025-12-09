@@ -22,4 +22,13 @@ app.use((req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
+
+app.use((err, req, res, next) => {
+  console.error(err.stack); // Log en consola
+  res.status(err.status || 500).json({ error: err.message || 'Error interno del servidor' });
+});
+
+
 app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
+
+

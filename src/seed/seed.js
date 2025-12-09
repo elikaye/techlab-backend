@@ -1,5 +1,6 @@
-import { db } from '../config/firebase.js';
+import admin from '../config/firebaseAdmin.js';
 
+const db = admin.firestore();
 const COLLECTION = process.env.FIRESTORE_COLLECTION_PRODUCTS || 'products';
 
 async function seed() {

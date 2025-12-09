@@ -1,11 +1,13 @@
-# Node
+
 node_modules/
 
-# Environment variables
+
 .env
 
-# Firebase credentials
 *.json
 
-# Logs
+
 *.log
+
+.vscode
+.idea

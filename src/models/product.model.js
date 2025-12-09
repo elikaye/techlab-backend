@@ -1,12 +1,13 @@
-import { db } from '../config/firebase.js';
+import admin from '../config/firebaseAdmin.js';
+
+const db = admin.firestore(); // Creamos la instancia de Firestore
+
 const COLLECTION = process.env.FIRESTORE_COLLECTION_PRODUCTS || 'products';
 
 export const productModel = {
   async getAll() {
     const snapshot = await db.collection(COLLECTION).get();
-    const products = [];
-    snapshot.forEach(doc => products.push({ id: doc.id, ...doc.data() }));
-    return products;
+    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   },
 
   async getById(id) {
